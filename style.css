@@ -6,34 +6,47 @@
 }
 
 body{
-    height:100vh;
+
+    cursor:pointer;
+
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
     display:flex;
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#ff9ecf,#ffd6e8,#fff0f6);
-    overflow:hidden;
+
 }
 
 .container{
+    width:90%;
+    max-width:700px;
+
     background:rgba(255,255,255,0.25);
-    padding:40px;
+    padding:30px;
     border-radius:25px;
     backdrop-filter:blur(10px);
+
     text-align:center;
+
     box-shadow:0 10px 30px rgba(0,0,0,.2);
+
     animation:fadeIn 2s;
+
+    margin:20px;
 }
 
 h1{
     color:#ff2e8a;
-    font-size:45px;
+    font-size:clamp(28px,5vw,45px);
     margin-bottom:20px;
 }
 
 p{
-    font-size:22px;
+    font-size:clamp(16px,3vw,22px);
     color:#444;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 button{
@@ -149,4 +162,383 @@ button:hover{
 
 .music-player audio{
     width:250px;
+}
+
+.memory-photo{
+
+    width:100%;
+    max-width:350px;
+
+    height:auto;
+
+    border-radius:20px;
+
+    display:block;
+
+    margin:20px auto;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+}
+
+#caption{
+
+    font-size:20px;
+
+    color:#ff2e8a;
+
+    margin-bottom:25px;
+
+    font-style:italic;
+}
+
+
+@media (max-width:768px){
+
+    body{
+        padding:20px;
+        overflow-y:auto;
+    }
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    button{
+        width:100%;
+        max-width:280px;
+        font-size:18px;
+    }
+
+    .memory-photo{
+        width:100%;
+        max-width:300px;
+    }
+
+    .music-player{
+        position:fixed;
+        bottom:10px;
+        left:10px;
+        right:10px;
+        width:auto;
+    }
+
+    .music-player audio{
+        width:100%;
+    }
+}
+
+
+/* Splash Screen */
+
+#loadingScreen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(135deg,#ff9ecf,#ffd6e8,#fff0f6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:9999;
+
+    cursor:pointer;
+
+    transition:1s;
+}
+
+#loadingScreen h1{
+
+    font-size:60px;
+
+    animation:pulse 1.5s infinite;
+}
+
+#loadingScreen h2{
+
+    color:#ff2e8a;
+
+    margin:20px 0;
+}
+
+#loadingScreen p{
+
+    color:#666;
+
+    animation:blink 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+
+        transform:scale(1.1);
+
+    }
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:.3;
+
+    }
+
+}
+
+
+/* Floating Love Notes */
+
+.note{
+    position:fixed;
+    bottom:-50px;
+    font-size:22px;
+    font-weight:bold;
+    color:#ff2e8a;
+    animation:floatNote 7s linear forwards;
+    pointer-events:none;
+    z-index:999;
+    text-shadow:0 0 8px rgba(255,255,255,.8);
+}
+
+@keyframes floatNote{
+
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+
+}
+
+
+/* Envelope */
+
+.envelope{
+
+    width:220px;
+    height:140px;
+
+    background:#ff6fa8;
+
+    margin:30px auto;
+
+    position:relative;
+
+    border-radius:0 0 12px 12px;
+
+    cursor:pointer;
+
+    transition:.5s;
+}
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:110px solid transparent;
+    border-right:110px solid transparent;
+    border-top:75px solid #ff95bf;
+
+    transform-origin:top;
+
+    transition:.8s;
+}
+
+.envelope:hover{
+
+    transform:scale(1.05);
+}
+
+.open::before{
+
+    transform:rotateX(180deg);
+}
+
+.envelope-text{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:20px;
+
+    padding-top:95px;
+
+    font-weight:bold;
+}
+
+
+.sparkle{
+
+    position:fixed;
+
+    width:8px;
+    height:8px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px pink;
+
+    pointer-events:none;
+
+    animation:sparkleAnim 2s linear forwards;
+
+    z-index:999;
+}
+
+@keyframes sparkleAnim{
+
+    from{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:translateY(-80px) scale(0);
+
+    }
+
+}
+
+
+#yesBtn,
+#noBtn{
+
+    margin:15px;
+
+    min-width:150px;
+
+}
+
+.date-card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+    margin:20px;
+
+}
+
+.confetti{
+
+    position:fixed;
+
+    top:-20px;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:3px;
+
+    animation:confettiFall linear forwards;
+
+    z-index:9999;
+
+}
+
+@keyframes confettiFall{
+
+    to{
+
+        transform:translateY(120vh) rotate(720deg);
+
+    }
+
+}
+
+#counter{
+
+    background:rgba(255,255,255,.5);
+
+    padding:20px;
+
+    margin:20px auto;
+
+    border-radius:20px;
+
+    color:#ff2e8a;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    width:90%;
+
+    max-width:400px;
+
+    line-height:1.8;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.petal{
+
+    position:fixed;
+
+    top:-50px;
+
+    animation:petalFall 7s linear forwards;
+
+    z-index:999;
+
+}
+
+@keyframes petalFall{
+
+    to{
+
+        transform:
+
+        translateY(120vh)
+
+        rotate(360deg);
+
+    }
+
 }
