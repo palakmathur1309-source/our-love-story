@@ -1,63 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Private Website ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+}
+
+.box{
+    width:340px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+    margin-bottom:15px;
+}
+
+p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    outline:none;
+    font-size:16px;
+}
+
+button{
+    margin-top:18px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d6d;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e6395d;
+}
+
+#error{
+    margin-top:15px;
+    color:red;
+}
+
+</style>
+
 </head>
 <body>
 
-    <!-- Floating Hearts -->
-    <body>
+<div class="box">
 
-<div id="loadingScreen">
+<h1>🔒 Private Website</h1>
 
-    <h1>❤️</h1>
+<p>Enter the password</p>
 
-    <h2>Made Especially For</h2>
+<input
+type="password"
+id="password"
+placeholder="Password">
 
-    <h1>Rishabh ❤️</h1>
+<button onclick="checkPassword()">
+Open ❤️
+</button>
 
-    <p>Tap anywhere to begin...</p>
+<p id="error"></p>
 
 </div>
-    
-    <div class="hearts">
-        <span>❤️</span>
-        <span>💖</span>
-        <span>💕</span>
-        <span>💗</span>
-        <span>💞</span>
-        <span>❤️</span>
-        <span>💖</span>
-    </div>
 
-    <!-- Main Content -->
-    <div class="container">
+<script>
 
-        <h1>Hi My Love ❤️</h1>
+function checkPassword(){
 
-        <p>I made something special just for you...</p>
+let pass=document.getElementById("password").value;
 
-        <button id="startBtn">Click Me ❤️</button>
+if(pass==="SweetestSoulForever14"){
 
-    </div>
+window.location.href="home.html";
 
-    <!-- Music Player (Outside Container) -->
-    <div class="music-player">
+}else{
 
-        <p>🎵 Our Song ❤️</p>
+document.getElementById("error").innerHTML="Wrong Password ❤️";
 
-        <audio id="bgMusic" controls loop>
-            <source src="tumse-he.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+}
 
-    </div>
+}
 
-    <script src="script.js"></script>
+document.getElementById("password").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+checkPassword();
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
