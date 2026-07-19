@@ -65,7 +65,7 @@ function openLetter(){
 
     `;
 
-    const message = `Dear Rishabh ❤️,
+    const message = `Dear SweetestSoul ❤️,
 
 From the day you came into my life, every moment has become more beautiful.
 
